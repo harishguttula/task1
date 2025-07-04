@@ -1,0 +1,300 @@
+import React, { useState, useEffect } from 'react';
+import { 
+  Brain, 
+  Trophy, 
+  Users, 
+  ArrowRight, 
+  CheckCircle, 
+  Star,
+  Zap,
+  Target,
+  Award,
+  Play,
+  BookOpen,
+  Lightbulb,
+  TrendingUp
+} from 'lucide-react';
+
+function App() {
+  const [isVisible, setIsVisible] = useState(false);
+
+  useEffect(() => {
+    setIsVisible(true);
+  }, []);
+
+  const features = [
+    {
+      icon: <Brain className="w-6 h-6" />,
+      title: "Smart Questions",
+      description: "AI-curated questions that adapt to your knowledge level"
+    },
+    {
+      icon: <Trophy className="w-6 h-6" />,
+      title: "Real-time Scoring",
+      description: "Track your progress with advanced scoring algorithms"
+    },
+    {
+      icon: <Target className="w-6 h-6" />,
+      title: "Multiple Categories",
+      description: "Choose from various topics including tech, science, and more"
+    },
+    {
+      icon: <Award className="w-6 h-6" />,
+      title: "Instant Feedback",
+      description: "Get immediate explanations for every answer"
+    }
+  ];
+
+  const categories = [
+    {
+      id: 1,
+      title: "Technology & Programming",
+      description: "Test your knowledge in JavaScript, React, Web Development, and CSS",
+      icon: "💻",
+      difficulty: "Mixed Levels",
+      questions: "15+ Questions"
+    },
+    {
+      id: 2,
+      title: "General Knowledge",
+      description: "Explore questions about science, history, geography, and current affairs",
+      icon: "🌍",
+      difficulty: "All Levels",
+      questions: "Coming Soon"
+    },
+    {
+      id: 3,
+      title: "Science & Mathematics",
+      description: "Challenge yourself with physics, chemistry, biology, and math problems",
+      icon: "🔬",
+      difficulty: "Advanced",
+      questions: "Coming Soon"
+    }
+  ];
+
+  return (
+    <div className="min-h-screen bg-gradient-to-br from-slate-900 via-purple-900 to-slate-900 text-white overflow-hidden">
+      {/* Animated Background Elements */}
+      <div className="absolute inset-0 overflow-hidden">
+        <div className="absolute -top-40 -right-40 w-80 h-80 bg-orange-500/20 rounded-full blur-3xl animate-pulse"></div>
+        <div className="absolute -bottom-40 -left-40 w-80 h-80 bg-blue-500/20 rounded-full blur-3xl animate-pulse delay-1000"></div>
+        <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-96 h-96 bg-purple-500/10 rounded-full blur-3xl animate-pulse delay-500"></div>
+      </div>
+
+      {/* Navigation */}
+      <nav className="relative z-10 px-6 py-4">
+        <div className="max-w-7xl mx-auto flex items-center justify-between">
+          <div className="flex items-center space-x-3">
+            <div className="w-10 h-10 bg-gradient-to-r from-orange-500 to-red-500 rounded-lg flex items-center justify-center">
+              <Brain className="w-6 h-6 text-white" />
+            </div>
+            <span className="text-2xl font-bold bg-gradient-to-r from-orange-400 to-red-400 bg-clip-text text-transparent">
+              Quiz Wala
+            </span>
+          </div>
+          <div className="hidden md:flex items-center space-x-8">
+            <a href="#categories" className="hover:text-orange-400 transition-colors">Categories</a>
+            <a href="#features" className="hover:text-orange-400 transition-colors">Features</a>
+            <a href="#about" className="hover:text-orange-400 transition-colors">About</a>
+            <button className="bg-gradient-to-r from-orange-500 to-red-500 px-6 py-2 rounded-full hover:shadow-lg hover:shadow-orange-500/25 transition-all duration-300">
+              Start Quiz
+            </button>
+          </div>
+        </div>
+      </nav>
+
+      {/* Hero Section */}
+      <section className="relative z-10 px-6 py-20">
+        <div className="max-w-7xl mx-auto text-center">
+          <div className={`transition-all duration-1000 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
+            <div className="inline-flex items-center space-x-2 bg-white/10 backdrop-blur-sm rounded-full px-4 py-2 mb-8">
+              <Star className="w-4 h-4 text-yellow-400" />
+              <span className="text-sm">INTERACTIVE LEARNING PLATFORM</span>
+            </div>
+            
+            <h1 className="text-6xl md:text-8xl font-bold mb-6 bg-gradient-to-r from-white via-orange-200 to-orange-400 bg-clip-text text-transparent">
+              QUIZ WALA
+            </h1>
+            <h2 className="text-4xl md:text-6xl font-bold mb-8 text-orange-400">
+              Test Your Knowledge
+            </h2>
+            
+            <p className="text-xl md:text-2xl text-gray-300 mb-12 max-w-3xl mx-auto leading-relaxed">
+              Challenge yourself with our interactive quiz platform featuring dynamic questions, 
+              instant feedback, and comprehensive performance analytics.
+            </p>
+
+            <div className="flex flex-col sm:flex-row items-center justify-center space-y-4 sm:space-y-0 sm:space-x-6">
+              <button className="group bg-gradient-to-r from-orange-500 to-red-500 px-8 py-4 rounded-full text-lg font-semibold hover:shadow-2xl hover:shadow-orange-500/25 transition-all duration-300 flex items-center space-x-2">
+                <Play className="w-5 h-5" />
+                <span>Start Quiz Now</span>
+                <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
+              </button>
+              <button className="border-2 border-white/20 px-8 py-4 rounded-full text-lg font-semibold hover:bg-white/10 transition-all duration-300">
+                Explore Categories
+              </button>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Quiz Categories */}
+      <section id="categories" className="relative z-10 px-6 py-20">
+        <div className="max-w-7xl mx-auto">
+          <div className="text-center mb-16">
+            <h3 className="text-4xl font-bold mb-4">Quiz Categories</h3>
+            <p className="text-gray-400 text-lg">Choose your preferred topic and start learning</p>
+          </div>
+
+          <div className="grid md:grid-cols-3 gap-8">
+            {categories.map((category, index) => (
+              <div 
+                key={category.id}
+                className={`relative p-8 rounded-2xl border transition-all duration-300 hover:scale-105 ${
+                  index === 0 
+                    ? 'bg-gradient-to-br from-orange-500/20 to-red-500/20 border-orange-500/50 shadow-lg shadow-orange-500/25' 
+                    : 'bg-white/5 border-white/10 hover:bg-white/10'
+                }`}
+              >
+                <div className="flex items-center justify-between mb-4">
+                  <span className="text-4xl">{category.icon}</span>
+                  <span className={`px-3 py-1 rounded-full text-xs font-semibold ${
+                    index === 0 
+                      ? 'bg-orange-500 text-white' 
+                      : 'bg-gray-700 text-gray-300'
+                  }`}>
+                    {index === 0 ? 'AVAILABLE' : 'COMING SOON'}
+                  </span>
+                </div>
+                
+                <h4 className="text-xl font-bold mb-3">{category.title}</h4>
+                <p className="text-gray-400 mb-4">{category.description}</p>
+                
+                <div className="flex items-center justify-between text-sm">
+                  <span className="text-gray-500">Difficulty: {category.difficulty}</span>
+                  <span className="text-gray-500">{category.questions}</span>
+                </div>
+                
+                {index === 0 && (
+                  <div className="mt-4">
+                    <Zap className="w-5 h-5 text-orange-400" />
+                  </div>
+                )}
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Features Section */}
+      <section id="features" className="relative z-10 px-6 py-20">
+        <div className="max-w-7xl mx-auto">
+          <div className="text-center mb-16">
+            <h3 className="text-4xl font-bold mb-4">Why Choose Quiz Wala?</h3>
+            <p className="text-gray-400 text-lg">Experience the future of interactive learning</p>
+          </div>
+
+          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+            {features.map((feature, index) => (
+              <div 
+                key={index}
+                className="group p-6 rounded-xl bg-white/5 border border-white/10 hover:bg-white/10 transition-all duration-300 hover:scale-105"
+              >
+                <div className="w-12 h-12 bg-gradient-to-r from-orange-500 to-red-500 rounded-lg flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
+                  {feature.icon}
+                </div>
+                <h4 className="text-lg font-semibold mb-2">{feature.title}</h4>
+                <p className="text-gray-400 text-sm">{feature.description}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* How It Works Section */}
+      <section className="relative z-10 px-6 py-20">
+        <div className="max-w-4xl mx-auto">
+          <div className="bg-gradient-to-r from-white/10 to-white/5 backdrop-blur-sm rounded-2xl p-8 border border-white/20">
+            <h3 className="text-2xl font-bold mb-6 flex items-center">
+              <Lightbulb className="w-6 h-6 text-yellow-400 mr-3" />
+              How Quiz Wala Works
+            </h3>
+            
+            <div className="grid md:grid-cols-3 gap-6">
+              <div className="text-center">
+                <div className="w-16 h-16 bg-gradient-to-r from-blue-500 to-cyan-500 rounded-full flex items-center justify-center mx-auto mb-4">
+                  <BookOpen className="w-8 h-8 text-white" />
+                </div>
+                <h4 className="font-semibold text-blue-400 mb-2">1. Choose Category</h4>
+                <p className="text-gray-300 text-sm">Select your preferred topic and difficulty level</p>
+              </div>
+              
+              <div className="text-center">
+                <div className="w-16 h-16 bg-gradient-to-r from-green-500 to-teal-500 rounded-full flex items-center justify-center mx-auto mb-4">
+                  <Brain className="w-8 h-8 text-white" />
+                </div>
+                <h4 className="font-semibold text-green-400 mb-2">2. Answer Questions</h4>
+                <p className="text-gray-300 text-sm">Tackle dynamic questions with time limits</p>
+              </div>
+              
+              <div className="text-center">
+                <div className="w-16 h-16 bg-gradient-to-r from-purple-500 to-pink-500 rounded-full flex items-center justify-center mx-auto mb-4">
+                  <TrendingUp className="w-8 h-8 text-white" />
+                </div>
+                <h4 className="font-semibold text-purple-400 mb-2">3. Get Results</h4>
+                <p className="text-gray-300 text-sm">Receive detailed analytics and feedback</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* CTA Section */}
+      <section className="relative z-10 px-6 py-20">
+        <div className="max-w-4xl mx-auto text-center">
+          <div className="bg-gradient-to-r from-orange-500/20 to-red-500/20 backdrop-blur-sm rounded-2xl p-12 border border-orange-500/30">
+            <h3 className="text-3xl font-bold mb-4">Ready to Challenge Yourself?</h3>
+            <p className="text-gray-300 text-lg mb-8">
+              Join thousands of learners who are improving their knowledge with Quiz Wala
+            </p>
+            
+            <div className="flex flex-col sm:flex-row items-center justify-center space-y-4 sm:space-y-0 sm:space-x-6">
+              <button className="group bg-gradient-to-r from-orange-500 to-red-500 px-8 py-4 rounded-full text-lg font-semibold hover:shadow-2xl hover:shadow-orange-500/25 transition-all duration-300 flex items-center space-x-2">
+                <Brain className="w-5 h-5" />
+                <span>Start Your First Quiz</span>
+                <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
+              </button>
+              <button className="border-2 border-white/20 px-8 py-4 rounded-full text-lg font-semibold hover:bg-white/10 transition-all duration-300 flex items-center space-x-2">
+                <Users className="w-5 h-5" />
+                <span>Join Community</span>
+              </button>
+            </div>
+            
+            <div className="mt-8 text-sm text-gray-400">
+              <p>🎯 Free to use • No registration required • Instant results</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Footer */}
+      <footer className="relative z-10 px-6 py-12 border-t border-white/10">
+        <div className="max-w-7xl mx-auto text-center">
+          <div className="flex items-center justify-center space-x-3 mb-4">
+            <div className="w-8 h-8 bg-gradient-to-r from-orange-500 to-red-500 rounded-lg flex items-center justify-center">
+              <Brain className="w-5 h-5 text-white" />
+            </div>
+            <span className="text-xl font-bold bg-gradient-to-r from-orange-400 to-red-400 bg-clip-text text-transparent">
+              Quiz Wala
+            </span>
+          </div>
+          <p className="text-gray-400">
+            Empowering learners worldwide through interactive quizzes and instant feedback
+          </p>
+        </div>
+      </footer>
+    </div>
+  );
+}
+
+export default App;
